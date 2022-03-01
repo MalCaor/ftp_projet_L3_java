@@ -10,6 +10,8 @@ import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import javax.naming.CompoundName;
+
 public class Main {
 
 	public static void main(String[] args) throws Exception {
@@ -28,7 +30,15 @@ public class Main {
 		String commande = "";
 		
 		// Attente de reception de commandes et leur execution
-		while(!(commande=br.readLine()).equals("bye")) {
+		/*while(!(commande=br.readLine()).equals("bye")) {
+			System.out.println(">> "+commande);
+			CommandExecutor.executeCommande(ps, commande);
+		}*/
+		int i;
+		while((i=br.read())!=-1){
+			commande = commande+(char)i;
+		}
+		while(!commande.equals("bye")) {
 			System.out.println(">> "+commande);
 			CommandExecutor.executeCommande(ps, commande);
 		}
