@@ -10,7 +10,6 @@ import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import javax.naming.CompoundName;
 
 public class Main {
 
