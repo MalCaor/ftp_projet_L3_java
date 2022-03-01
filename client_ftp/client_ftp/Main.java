@@ -35,16 +35,16 @@ public class Main {
             // le outputstream
             os = socket.getOutputStream();
             // le buffured
-            bos = new BufferedOutputStream(os);
+            //bos = new BufferedOutputStream(os);
             message = scanner.nextLine();
             if (message.equals("bye")){
                 communication = false;
             }
             for (int i = 0; i < message.length(); i++) {
-                bos.write(message.charAt(i));
+                os.write(message.charAt(i));
             }
             // close bos
-            bos.close();
+            //bos.close();
             // close os
             os.close();
         }
