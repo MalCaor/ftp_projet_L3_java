@@ -1,6 +1,7 @@
 package client_ftp;
 
-import java.io.OutputStream;
+import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.util.Scanner;
 
@@ -11,7 +12,7 @@ public class Main {
         // vars
         String message;
         Scanner scanner = new Scanner(System.in);
-        OutputStream os;
+        
 
         // set sock
         System.out.println("client_ftp");
@@ -28,9 +29,7 @@ public class Main {
         }
 
         System.out.println("connexion etablie");
-
-        // le outputstream
-        os = socket.getOutputStream();
+        BufferedWriter os = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 
         // boucle de communication
         while (communication) {
@@ -38,15 +37,13 @@ public class Main {
             if (message.equals("bye")){
                 communication = false;
             }
-            for (int i = 0; i < message.length(); i++) {
-                os.write(message.charAt(i));
-            }
-            
+            os.write(message);
+            os.newLine();
+            os.flush();
         }
 
         // close os
         os.close();
-
         // close scanner
         scanner.close();
         // close sock

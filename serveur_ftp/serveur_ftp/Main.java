@@ -1,4 +1,5 @@
 package serveur_ftp;
+
 /*
  * TP JAVA RIP
  * Min Serveur FTP
@@ -9,7 +10,6 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-
 
 public class Main {
 
@@ -29,18 +29,9 @@ public class Main {
 		String commande = "";
 		
 		// Attente de reception de commandes et leur execution
-		/*while(!(commande=br.readLine()).equals("bye")) {
+		while(!(commande=br.readLine()).equals("bye")) {
 			System.out.println(">> "+commande);
 			CommandExecutor.executeCommande(ps, commande);
-		}*/
-		int i;
-		while(!commande.equals("bye")) {
-			while((i=br.read())!=-1){
-				commande = commande+(char)i;
-			}
-			System.out.println(">> "+commande);
-			CommandExecutor.executeCommande(ps, commande);
-			commande = "";
 		}
 		
 		serveurFTP.close();
