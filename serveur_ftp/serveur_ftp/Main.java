@@ -34,12 +34,13 @@ public class Main {
 			CommandExecutor.executeCommande(ps, commande);
 		}*/
 		int i;
-		while((i=br.read())!=-1){
-			commande = commande+(char)i;
-		}
 		while(!commande.equals("bye")) {
+			while((i=br.read())!=-1){
+				commande = commande+(char)i;
+			}
 			System.out.println(">> "+commande);
 			CommandExecutor.executeCommande(ps, commande);
+			commande = "";
 		}
 		
 		serveurFTP.close();
