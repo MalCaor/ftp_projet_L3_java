@@ -19,7 +19,6 @@ public class Main {
         try {
             // le socket
             socket = new Socket("localhost", 2121);
-            System.out.println("connexion etablie");
         } catch (Exception e) {
             // no serveur
             System.out.println("aucun serveur dispo");
@@ -27,11 +26,14 @@ public class Main {
             scanner.close();
             return;
         }
-        
+
+        System.out.println("connexion etablie");
+
+        // le outputstream
+        os = socket.getOutputStream();
+
         // boucle de communication
         while (communication) {
-            // le outputstream
-            os = socket.getOutputStream();
             message = scanner.nextLine();
             if (message.equals("bye")){
                 communication = false;
@@ -39,9 +41,11 @@ public class Main {
             for (int i = 0; i < message.length(); i++) {
                 os.write(message.charAt(i));
             }
-            // close os
-            os.close();
+            
         }
+
+        // close os
+        os.close();
 
         // close scanner
         scanner.close();
