@@ -7,6 +7,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class serveur {
+	static String clientPath = System.getProperty("user.dir") + "/client";
 	static String userPath = "/personne";
 	static String currentPath = System.getProperty("user.dir") + "/home" + userPath;
     public static void main(String[] args) throws Exception {
