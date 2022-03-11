@@ -10,12 +10,13 @@ public class CommandeCD extends Commande {
 
 	public void execute() {
 		
-
 		File f = new File(serveur.currentPath);
 		
 		if(f.isDirectory()) {
+			
 			if(commandeArgs[0].equals("..")){
-				String[] tab = commandeArgs[0].split("/");
+				
+				String[] tab = serveur.currentPath.split("/|\\\\");
 				if(tab[tab.length - 1].equals("personne")){
 					ps.println("2 Erreur, dossier racine atteint");
 				}else{
@@ -24,18 +25,25 @@ public class CommandeCD extends Commande {
 						tempPath+="/"+tab[i];
 					}
 					serveur.currentPath=tempPath;
+					ps.println("0 "+serveur.currentPath);
 				}
 			}else{
+				
 				String[] listOfFile = f.list();
 				boolean found = false;
 
 				for (String file : listOfFile) {
-					if(commandeArgs[0].toLowerCase().equals(file)) found = true;
+					if(commandeArgs[0].equals(file)){
+						found = true;
+						break;
+					}
 				}
 				
 				if(found){
 					serveur.currentPath += "/"+commandeArgs[0];
 					ps.println("0 "+serveur.currentPath);
+				}else{
+					ps.println("2 cd : Impossible de trouver le chemin d'accès «"+commandeArgs[0]+"», car il n'existe pas.");
 				}
 			}
 			
