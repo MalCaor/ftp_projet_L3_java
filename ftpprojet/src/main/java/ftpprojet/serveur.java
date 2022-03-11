@@ -8,7 +8,7 @@ import java.net.Socket;
 
 public class serveur {
 	static String userPath = "/personne";
-	static String currentPath = System.getProperty("user.dir") + userPath;
+	static String currentPath = System.getProperty("user.dir") + "/home" + userPath;
     public static void main(String[] args) throws Exception {
 		System.out.println("Le Serveur FTP");
 		

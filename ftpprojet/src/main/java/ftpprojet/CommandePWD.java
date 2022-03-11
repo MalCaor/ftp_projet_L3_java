@@ -1,5 +1,4 @@
 package ftpprojet;
-import java.io.File;
 import java.io.PrintStream;
 
 public class CommandePWD extends Commande {
