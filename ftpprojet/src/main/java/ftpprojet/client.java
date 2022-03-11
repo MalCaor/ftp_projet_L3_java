@@ -38,7 +38,6 @@ public class client {
             System.out.println(br.readLine());
         }
         String messageRecu;
-        int intDevant;
         // boucle de communication
         while (communication) {
             message = scanner.nextLine();
@@ -49,8 +48,7 @@ public class client {
             os.newLine();
             os.flush();
             messageRecu = br.readLine();
-            if (messageRecu != null)
-            {
+            if (messageRecu != null){
                 System.out.println(messageRecu);
                 while (messageRecu.charAt(0) == '1') {
                     messageRecu = br.readLine();
