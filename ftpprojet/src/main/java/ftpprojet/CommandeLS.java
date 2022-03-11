@@ -1,5 +1,4 @@
 package ftpprojet;
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.file.DirectoryIteratorException;
@@ -19,13 +18,14 @@ public class CommandeLS extends Commande {
 		Path dir = Paths.get(serveur.currentPath);
 		try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir)) {
 			for (Path file: stream) {
-				ps.println(file.getFileName());
+				ps.println("1 " + file.getFileName());
 			}
 		} catch (IOException | DirectoryIteratorException x) {
 			// IOException can never be thrown by the iteration.
 			// In this snippet, it can only be thrown by newDirectoryStream.
 			System.err.println(x);
 		}
+		ps.println("0 ..");
 	}
 
 }
