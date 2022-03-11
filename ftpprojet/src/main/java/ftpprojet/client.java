@@ -44,9 +44,13 @@ public class client {
             if (message.equals("bye")){
                 communication = false;
             }
+
+            //ecriture du messgae
             os.write(message);
             os.newLine();
             os.flush();
+
+            //lecture de la reponse
             messageRecu = br.readLine();
             if (messageRecu != null){
                 System.out.println(messageRecu);
