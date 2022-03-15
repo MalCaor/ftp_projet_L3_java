@@ -26,15 +26,15 @@ public class CommandeSTOR extends Commande {
 					scanSrcFile.close();
 					destFileWriter.close();
 				}else{
-					ps.println("2 get : le fichier existe deja");
+					ps.println("2 stor : le fichier existe deja");
 				}
-				ps.println("0 get : "+commandeArgs[0]+" téléchargé");
+				ps.println("0 stor : "+commandeArgs[0]+" téléchargé");
 			} catch (IOException e) {
 				e.printStackTrace();
-				ps.println("2 get : erreur lors du téléchargement du fichier "+commandeArgs[0]);
+				ps.println("2 stor : erreur lors du téléchargement du fichier "+commandeArgs[0]);
 			}
 		}else{
-			ps.println("2 get : "+commandeArgs[0]+" n'est pas un fichier");
+			ps.println("2 stor : "+commandeArgs[0]+" n'est pas un fichier");
 		}
 	}
 
