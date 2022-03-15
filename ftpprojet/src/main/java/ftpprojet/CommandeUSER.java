@@ -1,5 +1,8 @@
 package ftpprojet;
 import java.io.PrintStream;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class CommandeUSER extends Commande {
 	
@@ -9,13 +12,19 @@ public class CommandeUSER extends Commande {
 
 	public void execute() {
 		// Ce serveur accepte uniquement le user personne
-		if(commandeArgs[0].toLowerCase().equals("personne")) {
-			CommandExecutor.userOk = true;
-			ps.println("0 Commande user OK");
+
+		for(String key : serveur.listClient.keySet())
+		{
+			if(commandeArgs[0].toLowerCase().equals(key)) {
+				CommandExecutor.userOk = true;
+				serveur.pseudoTMP = commandeArgs[0].toLowerCase();
+				ps.println("0 Commande user OK");
+				return;
+			}
 		}
-		else {
-			ps.println("2 Le user " + commandeArgs[0] + " n'existe pas");
-		}
+		
+		ps.println("2 Le user " + commandeArgs[0] + " n'existe pas");
+		
 		
 	}
 
