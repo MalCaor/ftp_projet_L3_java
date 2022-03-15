@@ -16,18 +16,23 @@ public class CommandeSTOR extends Commande {
 		if(srcFile.isFile()){
 			File destFile = new File(serveur.currentPath+"/"+commandeArgs[0]);
 			try {
-				if(destFile.createNewFile()){
-					Scanner scanSrcFile = new Scanner(srcFile);
-					FileWriter destFileWriter = new FileWriter(destFile);
-					while(scanSrcFile.hasNextLine()){
-						destFileWriter.write(scanSrcFile.nextLine());
-						destFileWriter.write("\n");
+				if(!destFile.createNewFile()){
+					if(destFile.delete()){
+						destFile.createNewFile();
+					}else{
+						ps.println("2 get : le fichier existe deja");
 					}
-					scanSrcFile.close();
-					destFileWriter.close();
-				}else{
-					ps.println("2 stor : le fichier existe deja");
 				}
+				
+				Scanner scanSrcFile = new Scanner(srcFile);
+				FileWriter destFileWriter = new FileWriter(destFile);
+				while(scanSrcFile.hasNextLine()){
+					destFileWriter.write(scanSrcFile.nextLine());
+					destFileWriter.write("\n");
+				}
+				scanSrcFile.close();
+				destFileWriter.close();
+
 				ps.println("0 stor : "+commandeArgs[0]+" téléchargé");
 			} catch (IOException e) {
 				e.printStackTrace();
