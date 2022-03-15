@@ -22,6 +22,7 @@ public class CommandeGET extends Commande {
 					FileWriter destFileWriter = new FileWriter(destFile);
 					while(scanSrcFile.hasNextLine()){
 						destFileWriter.write(scanSrcFile.nextLine());
+						destFileWriter.write("\n");
 					}
 					scanSrcFile.close();
 					destFileWriter.close();
