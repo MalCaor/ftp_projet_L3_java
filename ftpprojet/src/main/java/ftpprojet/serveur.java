@@ -15,7 +15,7 @@ public class serveur {
 	// dictionaire
 	static HashMap<String, String> listClient = new HashMap<String, String>();
 	// users connected
-	static HashMap<String, String> pathUser = new HashMap<String, String>();
+	static HashMap<String, String> pathUser= new HashMap<String, String>();
     public static void main(String[] args) throws Exception {
 		System.out.println("Le Serveur FTP");
 
