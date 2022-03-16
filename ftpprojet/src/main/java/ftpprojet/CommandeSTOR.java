@@ -33,7 +33,7 @@ public class CommandeSTOR extends Commande {
 				scanSrcFile.close();
 				destFileWriter.close();
 
-				ps.println("0 stor : "+commandeArgs[0]+" téléchargé");
+				ps.println("0 stor : "+commandeArgs[0]+" téléchargé dans "+c.currentPath);
 			} catch (IOException e) {
 				e.printStackTrace();
 				ps.println("2 stor : erreur lors du téléchargement du fichier "+commandeArgs[0]);

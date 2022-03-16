@@ -13,8 +13,8 @@ public class CommandePASS extends Commande {
 			c.pwOk = true;
 			serveur.pathUser.put(c.pseudoTMP, System.getProperty("user.dir") + "/home" + c.pseudoTMP);
 
-			c.clientPath = System.getProperty("user.dir") + "/client";
 			c.userPath = "/" + c.pseudoTMP;
+			c.clientPath = System.getProperty("user.dir") + "/client" + c.userPath;
 			c.currentPath = System.getProperty("user.dir") + "/home" + c.userPath;
 
 			ps.println("1 Commande pass OK");

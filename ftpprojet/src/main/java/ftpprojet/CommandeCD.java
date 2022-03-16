@@ -17,7 +17,7 @@ public class CommandeCD extends Commande {
 			if(commandeArgs[0].equals("..")){
 				
 				String[] tab = c.currentPath.split("/|\\\\");
-				if(tab[tab.length - 1].equals("personne")){
+				if(tab[tab.length - 1].equals(c.pseudoTMP)){
 					ps.println("2 Erreur, dossier racine atteint");
 				}else{
 					String tempPath=tab[0];
