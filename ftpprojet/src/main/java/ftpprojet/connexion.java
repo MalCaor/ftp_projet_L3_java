@@ -9,16 +9,14 @@ import java.io.PrintStream;
 import java.net.ServerSocket;
 
 public class connexion implements Runnable {
-    ServerSocket serveurFTP;
     Socket socket;
-    connexion(ServerSocket serveur){
-        serveurFTP = serveur;
+    connexion(Socket serveur){
+        socket = serveur;
     }
 
     @Override
 	public void run() {
 		try {
-			socket = serveurFTP.accept();
 		
 			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			PrintStream ps = new PrintStream(socket.getOutputStream());
@@ -35,7 +33,7 @@ public class connexion implements Runnable {
 				CommandExecutor.executeCommande(ps, commande);
 			}
 			
-			serveurFTP.close();
+			socket.close();
 			socket.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

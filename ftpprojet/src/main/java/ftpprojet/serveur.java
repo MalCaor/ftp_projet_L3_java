@@ -1,6 +1,7 @@
 package ftpprojet;
 
 import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.HashMap;
 
 public class serveur{
@@ -22,7 +23,7 @@ public class serveur{
 		
 		serveurFTP = new ServerSocket(2121);
 		while(true){
-			connexion con = new connexion(serveurFTP);
+			connexion con = new connexion(serveurFTP.accept());
 			Thread th = new Thread(con);
 			th.start();
 		}
