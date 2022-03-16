@@ -7,14 +7,14 @@ import java.util.Scanner;
 
 public class CommandeSTOR extends Commande {
 	
-	public CommandeSTOR(PrintStream ps, String commandeStr) {
-		super(ps, commandeStr);
+	public CommandeSTOR(connexion c, PrintStream ps, String commandeStr) {
+		super(c, ps, commandeStr);
 	}
 
 	public void execute() {
-		File srcFile = new File(serveur.clientPath+"/"+commandeArgs[0]);
+		File srcFile = new File(c.clientPath+"/"+commandeArgs[0]);
 		if(srcFile.isFile()){
-			File destFile = new File(serveur.currentPath+"/"+commandeArgs[0]);
+			File destFile = new File(c.currentPath+"/"+commandeArgs[0]);
 			try {
 				if(!destFile.createNewFile()){
 					if(destFile.delete()){

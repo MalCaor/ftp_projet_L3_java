@@ -9,6 +9,15 @@ import java.io.PrintStream;
 import java.net.ServerSocket;
 
 public class connexion implements Runnable {
+	// var 
+	String clientPath = System.getProperty("user.dir") + "/client";
+	String userPath = "/personne";
+	String currentPath = System.getProperty("user.dir") + "/home" + userPath;
+	String pseudoTMP;
+
+	boolean userOk = false ;
+	boolean pwOk = false ;
+
     Socket socket;
     connexion(Socket serveur){
         socket = serveur;
@@ -17,7 +26,6 @@ public class connexion implements Runnable {
     @Override
 	public void run() {
 		try {
-		
 			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			PrintStream ps = new PrintStream(socket.getOutputStream());
 			
@@ -30,7 +38,7 @@ public class connexion implements Runnable {
 			// Attente de reception de commandes et leur execution
 			while(!(commande=br.readLine()).equals("bye")) {
 				System.out.println(">> "+commande);
-				CommandExecutor.executeCommande(ps, commande);
+				CommandExecutor.executeCommande(this, ps, commande);
 			}
 			
 			socket.close();

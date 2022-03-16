@@ -7,15 +7,15 @@ import java.util.Scanner;
 
 public class CommandeGET extends Commande {
 	
-	public CommandeGET(PrintStream ps, String commandeStr) {
-		super(ps, commandeStr);
+	public CommandeGET(connexion c, PrintStream ps, String commandeStr) {
+		super(c, ps, commandeStr);
 	}
 
 	public void execute() {
 		//ps.println("La commande get n'est pas encoré implémentée");
-		File srcFile = new File(serveur.currentPath+"/"+commandeArgs[0]);
+		File srcFile = new File(c.currentPath+"/"+commandeArgs[0]);
 		if(srcFile.isFile()){
-			File destFile = new File(serveur.clientPath+"/"+commandeArgs[0]);
+			File destFile = new File(c.clientPath+"/"+commandeArgs[0]);
 			try {
 				if(!destFile.createNewFile()){
 					if(destFile.delete()){

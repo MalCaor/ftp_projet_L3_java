@@ -6,8 +6,10 @@ public abstract class Commande {
 	protected PrintStream ps;
 	protected String commandeNom = "";
 	protected String [] commandeArgs ;
+	protected connexion c;
 	
-	public Commande(PrintStream ps, String commandeStr) {
+	public Commande(connexion c, PrintStream ps, String commandeStr) {
+		this.c = c;
 		this.ps = ps ;
 		String [] args = commandeStr.split(" ");
 		commandeNom = args[0];

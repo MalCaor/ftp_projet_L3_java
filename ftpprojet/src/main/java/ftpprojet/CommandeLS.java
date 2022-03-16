@@ -9,13 +9,13 @@ import java.nio.file.Paths;
 
 public class CommandeLS extends Commande {
 	
-	public CommandeLS(PrintStream ps, String commandeStr) {
-		super(ps, commandeStr);
+	public CommandeLS(connexion c, PrintStream ps, String commandeStr) {
+		super(c, ps, commandeStr);
 	}
 
 	public void execute() {
 		//ps.println("La commande ls n'est pas encoré implémentée");
-		Path dir = Paths.get(serveur.currentPath);
+		Path dir = Paths.get(c.currentPath);
 		try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir)) {
 			for (Path file: stream) {
 				ps.println("1 " + file.getFileName());

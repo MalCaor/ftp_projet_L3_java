@@ -5,10 +5,7 @@ import java.net.Socket;
 import java.util.HashMap;
 
 public class serveur{
-	static String clientPath = System.getProperty("user.dir") + "/client";
-	static String userPath = "/personne";
-	static String currentPath = System.getProperty("user.dir") + "/home" + userPath;
-	static String pseudoTMP;
+	
 	static ServerSocket serveurFTP;
 	// dictionaire
 	static HashMap<String, String> listClient = new HashMap<String, String>();

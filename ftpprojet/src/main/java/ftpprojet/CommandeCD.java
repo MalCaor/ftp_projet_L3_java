@@ -4,19 +4,19 @@ import java.io.PrintStream;
 
 public class CommandeCD extends Commande {
 	
-	public CommandeCD(PrintStream ps, String commandeStr) {
-		super(ps, commandeStr);
+	public CommandeCD(connexion c, PrintStream ps, String commandeStr) {
+		super(c, ps, commandeStr);
 	}
 
 	public void execute() {
 		
-		File f = new File(serveur.currentPath);
+		File f = new File(c.currentPath);
 		
 		if(f.isDirectory()) {
 			
 			if(commandeArgs[0].equals("..")){
 				
-				String[] tab = serveur.currentPath.split("/|\\\\");
+				String[] tab = c.currentPath.split("/|\\\\");
 				if(tab[tab.length - 1].equals("personne")){
 					ps.println("2 Erreur, dossier racine atteint");
 				}else{
@@ -24,8 +24,8 @@ public class CommandeCD extends Commande {
 					for(int i=1; i<tab.length-1; i++){
 						tempPath+="/"+tab[i];
 					}
-					serveur.currentPath=tempPath;
-					ps.println("0 "+serveur.currentPath);
+					c.currentPath=tempPath;
+					ps.println("0 "+c.currentPath);
 				}
 			}else{
 				
@@ -40,8 +40,8 @@ public class CommandeCD extends Commande {
 				}
 				
 				if(found){
-					serveur.currentPath += "/"+commandeArgs[0];
-					ps.println("0 "+serveur.currentPath);
+					c.currentPath += "/"+commandeArgs[0];
+					ps.println("0 "+c.currentPath);
 				}else{
 					ps.println("2 cd : Impossible de trouver le chemin d'accès «"+commandeArgs[0]+"», car il n'existe pas.");
 				}
