@@ -12,6 +12,11 @@ public class CommandePASS extends Commande {
 		if(commandeArgs[0].toLowerCase().equals(serveur.listClient.get(c.pseudoTMP))) {
 			c.pwOk = true;
 			serveur.pathUser.put(c.pseudoTMP, System.getProperty("user.dir") + "/home" + c.pseudoTMP);
+
+			c.clientPath = System.getProperty("user.dir") + "/client";
+			c.userPath = "/" + c.pseudoTMP;
+			c.currentPath = System.getProperty("user.dir") + "/home" + c.userPath;
+
 			ps.println("1 Commande pass OK");
 			ps.println("0 Vous êtes bien connecté sur notre serveur");
 
