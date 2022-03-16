@@ -12,11 +12,16 @@ public class CommandeRMDIR extends Commande {
 		//ps.println("La commande rmdir n'est pas encoré implémentée");
         File f = new File(c.currentPath+"/"+commandeArgs[0]);
 
-        if(f.delete()){
-            ps.println("0 rmdir : le dossier a été supprimé");
+        if(f.isDirectory()){
+            if(f.delete()){
+                ps.println("0 rmdir : le dossier a été supprimé");
+            }else{
+                ps.println("2 rmdir : erreur lors de la suppression du dossier");
+            }
         }else{
-            ps.println("2 rmdir : erreur lors de la suppression du dossier");
+            ps.println("2 rmdir : "+commandeArgs[0]+" n'est pas un dossier");
         }
+        
 		
 	}
 
