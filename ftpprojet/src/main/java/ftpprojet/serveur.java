@@ -1,11 +1,6 @@
 package ftpprojet;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
 import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.HashMap;
 
 public class serveur{
@@ -22,7 +17,8 @@ public class serveur{
 		System.out.println("Le Serveur FTP");
 
 		// init client
-		listClient.put("personne", "abcd");
+		listClient.put("personne1", "abcd");
+		listClient.put("personne2", "1234");
 		
 		serveurFTP = new ServerSocket(2121);
 		while(true){
