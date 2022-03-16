@@ -34,7 +34,7 @@ public class CommandeGET extends Commande {
 				scanSrcFile.close();
 				destFileWriter.close();
 				
-				ps.println("0 get : "+commandeArgs[0]+" téléchargé");
+				ps.println("0 get : "+commandeArgs[0]+" téléchargé dans "+ c.clientPath);
 			} catch (IOException e) {
 				e.printStackTrace();
 				ps.println("2 get : erreur lors du téléchargement du fichier "+commandeArgs[0]);
