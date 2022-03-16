@@ -37,6 +37,19 @@ public class CommandExecutor {
 				return;
 			}
 
+			// Créer un dossier
+			if(commande.split(" ")[0].equals("mkdir")) 
+			{
+				(new CommandeMKDIR(c, ps, commande)).execute();
+				return;
+			}
+			// Supprimer un dossier
+			if(commande.split(" ")[0].equals("rmdir")) 
+			{
+				(new CommandeRMDIR(c, ps, commande)).execute();
+				return;
+			}
+
 			// no such command
 			ps.println("2 La commande n'existe pas");
 			return;
